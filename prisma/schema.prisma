@@ -1,0 +1,193 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  phone         String?
+  address       String?
+  role          String?
+
+  // truckId       String?
+  // truck         Truck?    @relation(fields: [truckId], references: [id])
+
+  // municipId     String    @default("")
+  // municip       Municip   @relation(fields: [municipId], references: [id])
+
+  messages      Message[]
+  tickets       Ticket[]
+  accounts      Account[]
+  sessions      Session[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+  @@map("verification_tokens")
+}
+
+//----------Container-----------
+
+model Container {
+  id          String      @id @default(cuid())
+  lat         String
+  lon         String
+  temp        String?
+  alarm       String?
+  apikey      String      @unique
+  address     String?
+  owner       String?
+  imei        String      @unique
+  fullness    Int         @default(0)
+  capacity    Int
+  lastPick    DateTime?
+
+  // truckId     String?
+  // truck       Truck?      @relation(fields: [truckId], references: [id])
+
+  // municipId   String
+  // municip     Municip     @relation(fields: [municipId], references: [id])
+
+  tickets     Ticket[]
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("containers")
+}
+
+model  Truck{
+  id          String      @id @default(cuid())
+
+  plate       String      @unique
+  truckType   String
+
+  capacity    Int
+  appoiStat   Boolean
+
+  // municipId   String
+  // municip     Municip     @relation(fields: [municipId], references: [id])
+  // groups      Group[]
+  // containers  Container[]
+  // personels   User[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("trucks")
+}
+
+model Group{
+  id          String      @id @default(cuid())
+  capacity    Int
+  // truckId     String?
+  // truck       Truck?      @relation(fields: [truckId], references: [id])
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("groups")
+}
+
+model Message{
+  id          String      @id @default(cuid())
+  text        String
+  senderId    String
+  receivers   User[]
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("messages")
+}
+
+model Ticket{
+  id          String        @id @default(cuid())
+  containerId String?
+  container   Container?    @relation(fields: [containerId], references: [id])
+  type        String
+  senderId    String?
+  sender      User?         @relation(fields: [senderId], references: [id])
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("tickets")
+}
+
+model Municip{
+  id          String        @id @default(cuid())
+  cityId      Int           @unique
+  cityName    String
+  regionId    String
+  regionName  String
+
+  // containers  Container[]
+  // trucks      Truck[]
+  // users       User[]
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("municips")
+}
+
