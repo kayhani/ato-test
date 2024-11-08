@@ -90,14 +90,14 @@ model VerificationToken {
 
 model Container {
   id          String      @id @default(cuid())
-  lat         String
-  lon         String
+  lat         String?
+  lon         String?
   temp        String?
   alarm       String?
-  apikey      String      @unique
+  apikey      String?
   address     String?
   owner       String?
-  imei        String      @unique
+  imei        String?      
   fullness    Int         @default(0)
   capacity    Int
   lastPick    DateTime?
