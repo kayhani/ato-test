@@ -1,6 +1,6 @@
 import { MdMoreHoriz } from "react-icons/md"
 
-const Cart = ({type,count}:{type:string | undefined, count:string | undefined}) => {
+const Cart = ({type,count}:{type:string | undefined, count:string}) => {
   return (
     <div className='rounded-2xl odd:bg-tekoPurple even:bg-tekoYellow p-4 flex-1 min-w-[130px]'>
       <div className="flex justify-between items-center">

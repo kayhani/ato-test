@@ -26,10 +26,10 @@ const AdminPage = async ({ user }: AdminPageProps) => {
       <div className="w-full lg:w-2/3 flex flex-col gap-8">
         {/* VEHICLE CARD */}
         <div className="flex gap-4 justify-between flex-wrap ">
-          <Cart type="Temperature" count={containerData?.temp} />
-          <Cart type="Alarm" count={containerData?.alarm} />
-          <Cart type="Kapasite" count={containerData?.capacity} />
-          <LocationCart type="Location" lat={containerData?.lat} lon={containerData?.lon} />
+          <Cart type="Temperature" count={containerData?.temp!} />
+          <Cart type="Alarm" count={containerData?.alarm!} />
+          <Cart type="Kapasite" count={String(containerData?.capacity!)} />
+          <LocationCart type="Location" lat={containerData?.lat!} lon={containerData?.lon!} />
         </div>
         {/* MIDDLE CHARTS */}
         {/* BOTTOM CHART */}
