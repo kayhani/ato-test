@@ -1,7 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import prisma from '@/lib/prisma';
-import { useId } from "react";
 
 
 export async function POST(request: NextRequest) {

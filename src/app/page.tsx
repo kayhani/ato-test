@@ -10,15 +10,6 @@ export default async function Home() {
       <h2 className="text-center text-2xl font-semibold">Users</h2>
       {/* TODO: Display users here */}
 
-      <ul className="list-inside list-disc">
-          {users.map((user) => (
-            <li key={user.id}>
-              <Link href={`/user/${user.id}`} className="hover:underline">
-                  {user.name || 'User ${user.id}'}
-              </Link>
-            </li>
-          ))}
-      </ul>
     </main>
   );
 }

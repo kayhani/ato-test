@@ -47,34 +47,10 @@ export default function SettingsPage({user}: SettingsPageProps) {
   }
 
   return (
-    <main className="px-3 py-10">
-      <section className="mx-auto max-w-7xl space-y-6">
+      <div className="flex items-center justify-center">
         <h1 className="text-3xl font-bold">Settings</h1>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="max-w-sm space-y-2.5"
-          >
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter a username" {...field} />
-                  </FormControl>
-                  <FormDescription>Your public username</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" disabled={form.formState.isSubmitting}>
-              Submit
-            </Button>
-          </form>
-        </Form>
-      </section>
-    </main>
+        
+      </div>
+    
   );
 }

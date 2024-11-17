@@ -17,7 +17,7 @@ export default function DashboardLayout({
           <BsTrash3 />
           <span className="hidden lg:block ">ATO</span>
         </Link>
-        <Menu />
+     
       </div>
       {/* RIGHT */}
       <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] bg-[#F7F8FA] p-4 overflow-scroll">
