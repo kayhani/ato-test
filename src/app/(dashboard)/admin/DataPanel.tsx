@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Cart from "@/components/Cart"
-import prisma from "@/lib/prisma";
-import { User } from "next-auth";
 import { Container } from "@prisma/client";
 import LocationCart from "@/components/LocationCart";
 import MapProvider from "@/app/providers/map-provider";
@@ -59,12 +57,11 @@ const DataPanel = () => {
             <div className="w-full lg:w-2/3 flex flex-col gap-8">
                 {/* VEHICLE CARD */}
                 {data.map((item) => (
-                   
                     <div key={item.id}>
                         <div className="flex gap-4 justify-between flex-wrap ">
                             <Cart type="Temperature" count={item?.temp} />
                             <Cart type="Alarm" count={item?.alarm} />
-                            <Cart type="Kapasite" count={String(item?.capacity)} />
+                            <Cart type="Kapasite" count={item?.capacity} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
                     </div>
