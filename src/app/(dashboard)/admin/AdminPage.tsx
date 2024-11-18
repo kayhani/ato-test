@@ -1,6 +1,4 @@
 import Cart from "@/components/Cart"
-import MapProvider from "@/app/providers/map-provider";
-import Map from "@/components/Map"
 import Announcement from "@/components/Announcement";
 import Messages from "@/components/Messages";
 import prisma from "@/lib/prisma";
@@ -26,24 +24,24 @@ const AdminPage = async ({ user }: AdminPageProps) => {
       <div className="w-full lg:w-2/3 flex flex-col gap-8">
         {/* VEHICLE CARD */}
         <div className="flex gap-4 justify-between flex-wrap ">
-          <Cart type="Temperature" count={containerData?.temp!} />
-          <Cart type="Alarm" count={containerData?.alarm!} />
-          <Cart type="Kapasite" count={String(containerData?.capacity!)} />
-          <LocationCart type="Location" lat={containerData?.lat!} lon={containerData?.lon!} />
+          <Cart type="Temperature" count={containerData?.temp} />
+          <Cart type="Alarm" count={containerData?.alarm} />
+          <Cart type="Kapasite" count={String(containerData?.capacity)} />
+          <LocationCart type="Location" lat={containerData?.lat} lon={containerData?.lon} />
         </div>
         {/* MIDDLE CHARTS */}
         {/* BOTTOM CHART */}
-        <div className="">
+        {/* <div className="">
           <MapProvider>
             <Map container = {containerData}/>
           </MapProvider>
-        </div>
+        </div> */}
       </div>
       {/* RIGHT */}
-      <div className="w-full lg:w-1/3">
+      {/* <div className="w-full lg:w-1/3">
         <Announcement />
         <Messages />
-      </div>
+      </div> */}
     </div>
   )
 }
