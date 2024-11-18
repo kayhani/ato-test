@@ -29,19 +29,9 @@ const AdminPage = async ({ user }: AdminPageProps) => {
           <Cart type="Kapasite" count={String(containerData?.capacity)} />
           <LocationCart type="Location" lat={containerData?.lat} lon={containerData?.lon} />
         </div>
-        {/* MIDDLE CHARTS */}
-        {/* BOTTOM CHART */}
-        {/* <div className="">
-          <MapProvider>
-            <Map container = {containerData}/>
-          </MapProvider>
-        </div> */}
+        
       </div>
-      {/* RIGHT */}
-      {/* <div className="w-full lg:w-1/3">
-        <Announcement />
-        <Messages />
-      </div> */}
+     
     </div>
   )
 }

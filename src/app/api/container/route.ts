@@ -58,6 +58,6 @@ export async function POST(request: NextRequest) {
             }
         });
     } else {
-        return NextResponse.json({ error: "Invalid Auth Token" }, { status: 401 });
+        
     }
 }
