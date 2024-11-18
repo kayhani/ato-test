@@ -98,8 +98,8 @@ model Container {
   address     String?
   owner       String?
   imei        String?
-  fullness    Int         @default(0)
-  capacity    Int
+  fullness    String?         @default("0")
+  capacity    String?
   lastPick    DateTime?
 
   // truckId     String?
