@@ -26,14 +26,6 @@ model User {
   address       String?
   role          String?
 
-  // truckId       String?
-  // truck         Truck?    @relation(fields: [truckId], references: [id])
-
-  // municipId     String    @default("")
-  // municip       Municip   @relation(fields: [municipId], references: [id])
-
-  messages      Message[]
-  tickets       Ticket[]
   accounts      Account[]
   sessions      Session[]
 
@@ -98,17 +90,8 @@ model Container {
   address     String?
   owner       String?
   imei        String?
-  fullness    String?         @default("0")
   capacity    String?
-  lastPick    DateTime?
-
-  // truckId     String?
-  // truck       Truck?      @relation(fields: [truckId], references: [id])
-
-  // municipId   String
-  // municip     Municip     @relation(fields: [municipId], references: [id])
-
-  tickets     Ticket[]
+  url         String?
 
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -116,78 +99,4 @@ model Container {
   @@map("containers")
 }
 
-model  Truck{
-  id          String      @id @default(cuid())
-
-  plate       String      @unique
-  truckType   String
-
-  capacity    Int
-  appoiStat   Boolean
-
-  // municipId   String
-  // municip     Municip     @relation(fields: [municipId], references: [id])
-  // groups      Group[]
-  // containers  Container[]
-  // personels   User[]
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-
-  @@map("trucks")
-}
-
-model Group{
-  id          String      @id @default(cuid())
-  capacity    Int
-  // truckId     String?
-  // truck       Truck?      @relation(fields: [truckId], references: [id])
-
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-
-  @@map("groups")
-}
-
-model Message{
-  id          String      @id @default(cuid())
-  text        String
-  senderId    String
-  receivers   User[]
-
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-
-  @@map("messages")
-}
-
-model Ticket{
-  id          String        @id @default(cuid())
-  containerId String?
-  container   Container?    @relation(fields: [containerId], references: [id])
-  type        String
-  senderId    String?
-  sender      User?         @relation(fields: [senderId], references: [id])
-
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-
-  @@map("tickets")
-}
-
-model Municip{
-  id          String        @id @default(cuid())
-  cityId      Int           @unique
-  cityName    String
-  regionId    String
-  regionName  String
-
-  // containers  Container[]
-  // trucks      Truck[]
-  // users       User[]
-
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-
-  @@map("municips")
-}
 

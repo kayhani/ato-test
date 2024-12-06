@@ -34,7 +34,6 @@ export async function POST(request: NextRequest) {
             temp: dt?.temp,
             alarm: dt?.alarm,
             imei: dt?.imei,
-            fullnes: dt?.fullness,
             capacity: dt?.capacity,
         }
     });
