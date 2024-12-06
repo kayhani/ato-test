@@ -61,7 +61,7 @@ const DataPanel = () => {
                         <div className="flex gap-4 justify-between flex-wrap ">
                             <Cart type="Temperature" count={item?.temp} />
                             <Cart type="Alarm" count={item?.alarm} />
-                            <Cart type="Kapasite" count={item?.capacity} />
+                            <Cart type="Kapasite" count={String(item?.capacity)} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
                     </div>
