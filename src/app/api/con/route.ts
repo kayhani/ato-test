@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Authorization kontrolü
-        const authHeader = request.headers.get("authorization") || '';
+        const authHeader = request.headers.get("Authorization") || '';
         const authToken = authHeader.startsWith("Bearer ") ? authHeader.split("Bearer ")[1] : null;
 
         console.log({ authToken });
