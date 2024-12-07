@@ -27,9 +27,6 @@ const DataPanel = () => {
                 headers: {
                     "Content-Type": "application/json", // JSON formatında veri gönderildiğini belirtir
                     "Authorization": `Bearer ${token}`, 
-                    'Cache-Control': 'no-cache',
-                    'Pragma': 'no-cache',
-                    'Expires': '0'// Token başlığı
                 },
                 body: JSON.stringify(payload), // Body'yi JSON formatına çevir
             });
@@ -69,7 +66,7 @@ const DataPanel = () => {
                             <Cart type="Kapasite" count={String(item?.capacity)} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
-                        <div className="w-full">
+                        <div className="">
                             <Image src={item?.url} alt="" width={200} height={100} key={Date.now()}/>
                         </div>
                     </div>
