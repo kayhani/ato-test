@@ -69,6 +69,7 @@ const DataPanel = () => {
                             <Cart type="Kapasite" count={String(item?.capacity)} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
+                        <div className="w-full">
                             <Image src={item?.url} alt="" width={200} height={100} key={Date.now()}/>
                         </div>
                     </div>
