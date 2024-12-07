@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
             const buffer = Buffer.from(arrayBuffer);
 
             // Dosya adı container id'ye göre belirleniyor
-            const fileName = `${res.data.id}_${Date.now()}${fileExtension}`;
+            const fileName = `${res.data.id}${fileExtension}`;
 
             const uploadsDir = path.join(process.cwd(), "public", "uploads");
             await fs.mkdir(uploadsDir, { recursive: true });
