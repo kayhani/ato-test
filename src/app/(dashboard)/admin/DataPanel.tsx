@@ -67,7 +67,13 @@ const DataPanel = () => {
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
                         <div className="">
-                            <Image src={item?.url} alt="" width={200} height={100} key={Date.now()}/>
+                            <Image 
+                                src={item?.url} 
+                                alt="" 
+                                width={200} 
+                                height={100} 
+                                unoptimized  // Cache sorunları için
+                                priority />
                         </div>
                     </div>
                     
