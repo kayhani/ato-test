@@ -23,9 +23,13 @@ const DataPanel = () => {
         try {
             const response = await fetch("/api/getdata", {
                 method: "POST", // POST metodu
+                cache: 'no-store', // Her seferinde yeni veri çek
                 headers: {
                     "Content-Type": "application/json", // JSON formatında veri gönderildiğini belirtir
-                    "Authorization": `Bearer ${token}`, // Token başlığı
+                    "Authorization": `Bearer ${token}`, 
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'// Token başlığı
                 },
                 body: JSON.stringify(payload), // Body'yi JSON formatına çevir
             });
@@ -66,7 +70,7 @@ const DataPanel = () => {
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
                         <div className="">
-                            <Image src={item?.url} alt="" width={200} height={100}/>
+                            <Image src={item?.url} alt="" width={200} height={100} key={Date.now()}/>
                         </div>
                     </div>
                     
