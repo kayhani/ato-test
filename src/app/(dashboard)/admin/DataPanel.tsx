@@ -5,6 +5,7 @@ import { Container } from "@prisma/client";
 import LocationCart from "@/components/LocationCart";
 import MapProvider from "@/app/providers/map-provider";
 import Map from "@/components/Map";
+import Image from "next/image";
 
 
 
@@ -64,8 +65,14 @@ const DataPanel = () => {
                             <Cart type="Kapasite" count={String(item?.capacity)} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
+                        <div className="">
+                            <Image src={item?.url} alt="" width={200} height={100}/>
+                        </div>
                     </div>
+                    
                 ))}
+
+               
 
                 <div className="">
                     <MapProvider>
