@@ -26,7 +26,7 @@ const DataPanel = () => {
                 cache: 'no-store', // Her seferinde yeni veri çek
                 headers: {
                     "Content-Type": "application/json", // JSON formatında veri gönderildiğini belirtir
-                    "Authorization": `Bearer ${token}`, 
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(payload), // Body'yi JSON formatına çevir
             });
@@ -66,30 +66,35 @@ const DataPanel = () => {
                             <Cart type="Kapasite" count={String(item?.capacity)} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
+
+                    </div>
+
+                ))}
+                {data.map((item) => (
+                    <div key={item.id}>
                         <div className="">
-                            <Image 
-                                src={item?.url} 
-                                alt="" 
-                                width={200} 
-                                height={100} 
+                            <Image
+                                src={item?.url}
+                                alt=""
+                                width={200}
+                                height={100}
                                 unoptimized  // Cache sorunları için
                                 priority />
                         </div>
                     </div>
-                    
                 ))}
 
-               
 
-                <div className="">
-                    <MapProvider>
-                        <Map data={data} />
-                    </MapProvider>
-                </div>
-            </div>
+
+                        <div className="">
+                            <MapProvider>
+                                <Map data={data} />
+                            </MapProvider>
+                        </div>
+                    </div>
         </div>
-    )
+            )
 
 };
 
-export default DataPanel;
+            export default DataPanel;
