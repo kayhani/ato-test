@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
             alarm: dt?.alarm,
             imei: dt?.imei,
             capacity: dt?.capacity,
+            motion: dt?.motion,
             url: dt?.url,
         }
     });

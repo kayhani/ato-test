@@ -63,7 +63,8 @@ const DataPanel = () => {
                         <div className="flex gap-4 justify-between flex-wrap ">
                             <Cart type="Temperature" count={item?.temp} />
                             <Cart type="Alarm" count={item?.alarm} />
-                            <Cart type="Kapasite" count={String(item?.capacity)} />
+                            <Cart type="Kapasite" count={item?.capacity} />
+                            <Cart type="Hareket" count={item?.motion} />
                             <LocationCart type="Location" lat={item?.lat} lon={item?.lon} />
                         </div>
 
@@ -74,7 +75,7 @@ const DataPanel = () => {
                 <div className="">
                     {data.map((item) => (
                         <div key={item.id}>
-                            <div className="">
+                            <div className="w-full">
                                 <Image
                                     src={item?.url}
                                     alt=""
