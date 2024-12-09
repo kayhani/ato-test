@@ -70,31 +70,31 @@ const DataPanel = () => {
                     </div>
 
                 ))}
-                {data.map((item) => (
-                    <div key={item.id}>
-                        <div className="">
-                            <Image
-                                src={item?.url}
-                                alt=""
-                                width={200}
-                                height={100}
-                                unoptimized  // Cache sorunları için
-                                priority />
+
+                <div className="">
+                    {data.map((item) => (
+                        <div key={item.id}>
+                            <div className="">
+                                <Image
+                                    src={item?.url}
+                                    alt=""
+                                    width={800}
+                                    height={400}
+                                    unoptimized  // Cache sorunları için
+                                    priority />
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                    <MapProvider>
+                        <Map data={data} />
+                    </MapProvider>
 
 
-
-                        <div className="">
-                            <MapProvider>
-                                <Map data={data} />
-                            </MapProvider>
-                        </div>
-                    </div>
+                </div>
+            </div>
         </div>
-            )
+    )
 
 };
 
-            export default DataPanel;
+export default DataPanel;

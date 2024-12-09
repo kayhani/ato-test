@@ -55,6 +55,7 @@ export async function POST(request: NextRequest) {
                         lon: res.data.lon,
                         alarm: res.data.alarm,
                         capacity: res.data.capacity,
+                        motion: res.data.motion,
                         temp: res.data.temp,
                         apikey: authToken,
                         imei: res.data.imei,
@@ -78,6 +79,7 @@ export async function POST(request: NextRequest) {
                         temp: res.data.temp,
                         apikey: authToken,
                         imei: res.data.imei,
+                        motion: res.data.motion,
                         url: fileUrl, // Güncellenmiş dosya URL'si "url" olarak kaydediliyor
                     },
                 });
