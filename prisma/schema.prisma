@@ -85,6 +85,11 @@ model Container {
   lat         String?
   lon         String?
   temp        String?
+  laser1      String?
+  laser2      String?
+  ax          String?
+  ay          String?
+  az          String?
   alarm       String?
   apikey      String?
   address     String?
